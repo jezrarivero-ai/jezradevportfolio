@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jhumuel Ezra Rivero - Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="JezraStyle.css"/>
+</head>
+<body>
+
+  <!-- ===DESKTOP TOP NAV=== -->
+  <nav id="desktop-nav">
+    <div class="container nav-inner">
+      <a href="#home" class="nav-logo">JEAR</a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+        <!-- OPTIONAL: Add a "Download CV" button here -->
+        <!-- <a href="resume.pdf" download class="btn btn-primary" style="padding:.5rem 1.1rem;font-size:.84rem">↓ Resume</a> -->
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===MOBILE BOTTOM NAV=== -->
+  <nav id="mobile-nav">
+    <div class="mob-nav-inner">
+      <a href="#home" class="mob-nav-item active" data-section="home">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Home</span>
+      </a>
+      <a href="#about" class="mob-nav-item" data-section="about">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>About</span>
+      </a>
+      <a href="#skills" class="mob-nav-item" data-section="skills">
+        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <span>Skills</span>
+      </a>
+      <a href="#projects" class="mob-nav-item" data-section="projects">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <span>Projects</span>
+      </a>
+      <a href="#contact" class="mob-nav-item" data-section="contact">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>Contact</span>
+      </a>
+      <button class="mob-theme-btn" id="mobThemeToggle" aria-label="Toggle theme">
+        <svg viewBox="0 0 24 24" id="mobThemeIcon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span>Theme</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ====HOME=== -->
+  <section id="home">
+    <div class="hero-video-wrap" id="heroVideoWrap">
+      <!-- CHANGE: Update src="your-video.mp4" to your actual video file path -->
+      <!-- CHANGE: Update poster="" to poster="your-thumbnail.jpg" for a loading image -->
+      <video id="heroBgVideo" autoplay muted loop playsinline poster="">
+        <source src="bgcolor.mp4" type="video/mp4">
+        <!-- Optional WebM fallback: <source src="your-video.webm" type="video/webm"> -->
+      </video>
+      <div class="hero-video-overlay"></div>
+    </div>
+ 
+    <!-- Fallback blobs shown if video fails / not provided -->
+    <div id="heroBlobFallback" style="position:absolute;inset:0;pointer-events:none;z-index:0;display:none">
+      <div class="hero-blob hero-blob-1"></div>
+      <div class="hero-blob hero-blob-2"></div>
+    </div>
+    <div class="container">
+      <div class="hero-grid">
+
+        <div class="hero-content">
+          <div class="hero-eyebrow">
+            <span class="dot"></span>
+            Online
+          </div>
+
+          <h1 class="hero-name">
+            Hello, I'm<br>
+            <span class="highlight">Jhumuel Ezra A. Rivero</span>
+          </h1>
+
+          <p class="hero-role">Web Developer</p>
+
+          <p class="hero-tagline">
+            Innovate. Integrate. Dominate.
+          </p>
+
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary">
+              View My Work
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="#contact" class="btn btn-outline">Contact</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-avatar-wrap">
+            <div class="hero-avatar-ring"></div>
+            <div class="hero-avatar">
+              <img src="pfp.png" alt="Your Name">
+            </div>
+            <!-- Floating stat badges -->
+            <div class="hero-stat">
+              <span class="stat-icon">🎓</span>
+              <div class="stat-text">
+                <small>3rd Year IT Student</small>
+              </div>
+            </div>
+            <div class="hero-stat">
+              <span class="stat-icon">💻</span>
+              <div class="stat-text">
+                <small>Web-based Projects</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===ABOUT ME === -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="about-grid">
+
+        <div class="about-img-wrap reveal">
+          <div class="about-img">
+            <!-- CHANGE: Replace with <img src="about-photo.jpg" alt="About Me"> -->
+            <div class="placeholder-block">
+              <span>🖼️</span>
+              Your Photo Here
+            </div>
+          </div>
+          <div class="about-img-decoration"></div>
+          <div class="about-tag-float">
+            <strong><!-- e.g. 3+ --></strong>
+            <span>Projects Built</span>
+          </div>
+        </div>
+
+        <div class="about-content reveal">
+          <p class="section-label">About Me</p>
+          <h2 class="section-title">Crafting Digital<br>Experiences</h2>
+          <p>
+            Hi! I'm Jhumuel Ezra A. Rivero, a 3rd year student at STI College Naga taking up BSIT.
+            I have a passion for building web-based projects that turn ideas into digital reality 
+            with code and creativity.
+          </p>
+
+          <div class="edu-card">
+            <div class="edu-icon">🎓</div>
+            <div class="edu-text"> <strong>Education <br></strong>
+              <strong><br>Bachelor of Science in Information Technology<br></strong>
+              <span> STI College Naga · 2023 – Present <br></span>
+              <strong><br>Grade 11-12 (STEM)<br></strong>
+              <span> University Of Nueva Caceres · 2018 – 2020<br></span>
+              <strong><br>Grade 7-10<br></strong>
+              <span> Francisco P Felix Memorial National High School · 2014 – 2018<br></span>
+              <strong><br>Grade 4-6 <br></strong>
+              <span> Marick Elementary School · 2011 – 2014<br></span>
+            </div>
+          </div>
+
+          <div class="edu-card" style="margin-top:.75rem">
+            <div class="edu-icon">🏆</div>
+            <div class="edu-text">
+              <strong>Award of Course Completion Java Fundamentals</strong>
+              <span>Oracle Academy · 2024<br></span>
+              <strong><br>Competed at Electrical Installation and Maintenance Region 4A</strong>
+              <span>FPFMNHS · 2017</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===SKILLS=== -->
+  <section id="skills" class="section">
+    <div class="container">
+      <div class="reveal" style="text-align:center;margin-bottom:1rem">
+        <p class="section-label">What I Work With</p>
+        <h2 class="section-title">My Tech Stack</h2>
+        <p class="section-sub" style="margin:0 auto">
+          These are the tools and technologies I've worked with throughout my projects and studies.
+        </p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card reveal">
+          <div class="skill-card-header">
+            <div class="skill-icon">⚙️</div>
+            <h3>Programming Languages</h3>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-label"><span>HTML & CSS</span><span>75%</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-width="75"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-label"><span>JavaScript</span><span>70%</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-width="70"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-label"><span>Java</span><span>80%</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-width="80"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-label"><span>C#</span><span>75%</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-width="75"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-label"><span>Python</span><span>70%</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-width="70"></div></div>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-card-header">
+            <div class="skill-icon">🌐</div>
+            <h3>Databases</h3>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-label"><span>MySQL</span><span>65%</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-width="65"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-label"><span>MongoDB</span><span>70%</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-width="70"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-label"><span>SQL Server Management Studio</span><span>80%</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-width="70"></div>80</div>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-card-header">
+            <div class="skill-icon">🎨</div>
+            <h3>Software Used</h3>
+          </div>
+          <div class="tech-icons reveal" style="justify-content:center;margin-top:3rem">
+            <span class="tech-pill"><span class="emoji"></span> VS Code</span>
+            <span class="tech-pill"><span class="emoji"></span> Netbeans</span>
+            <span class="tech-pill"><span class="emoji"></span> Visual Studio</span>
+            <span class="tech-pill"><span class="emoji"></span> Capcut</span>
+            <span class="tech-pill"><span class="emoji"></span> Gmail</span>
+            <span class="tech-pill"><span class="emoji"></span> Outlook</span>
+            <span class="tech-pill"><span class="emoji"></span> MongoDB</span>
+            <span class="tech-pill"><span class="emoji"></span> Virtual Box</span>
+            <span class="tech-pill"><span class="emoji"></span> Archimate</span>
+            <span class="tech-pill"><span class="emoji"></span> Gemini</span>
+            <span class="tech-pill"><span class="emoji"></span> Claude</span>
+            <span class="tech-pill"><span class="emoji"></span> Github</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==PROJECTS== -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="proj-header reveal">
+        <div>
+          <p class="section-label">What I've Built</p>
+          <h2 class="section-title">My Projects</h2>
+        </div>
+        <div class="filter-tabs">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="web">Web</button>
+          <button class="filter-btn" data-filter="app">App</button>
+          <button class="filter-btn" data-filter="design">Design</button>
+        </div>
+      </div>
+
+      <div class="projects-grid" id="projectsGrid">
+
+        <!-- ─── PROJECT 1 ─── -->
+        <div class="project-card reveal" data-category="web">
+          <div class="proj-thumb">
+            <img src="booktrack.png" alt="Project 1">
+            <div class="proj-thumb-placeholder">🖥️</div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+            </div>
+            <h3>BookTrack</h3>
+            <p>
+              A Library Management System that automates library operations 
+              and book tracking for Don Servillano Platon Memorial High School.
+            </p>
+            <div class="proj-links">
+              <!-- CHANGE: Replace # with the live site URL 
+              <a href="#" target="_blank" class="proj-link live">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Live Demo
+              </a>-->
+              <a href="https://github.com/Jmbenosa/WEB-PROJECT" target="_blank" class="proj-link">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── PROJECT 2 ─── -->
+        <div class="project-card reveal" data-category="web">
+          <div class="proj-thumb">
+            <div class="proj-thumb-placeholder">🖥️</div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+            </div>
+            <h3>Conventory</h3>
+            <p>
+              A Web-Based Point-of-Sale(POS) and Inventory Management System 
+              with AI Stock alert and recommendation and NFC Technology 
+              integration for customer loyalty reward system.
+            </p>
+            <div class="proj-links">
+              <!--<a href="#" target="_blank" class="proj-link live">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Live Demo
+              </a> -->
+              <a href="https://github.com/Jmbenosa/POSv3" target="_blank" class="proj-link">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── PROJECT 3 ──── -->
+        <div class="project-card reveal" data-category="web">
+          <div class="proj-thumb">
+            <div class="proj-thumb-placeholder">🖥️</div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+            </div>
+            <h3>Jhumuel Ezra A. Rivero - Portfolio</h3>
+            <p>
+              Hi! I'm Jhumuel Ezra A. Rivero, a 3rd year student at STI College Naga 
+              taking up BSIT. I have a passion for building web-based projects that 
+              turn ideas into digital reality with code and creativity. 
+            </p>
+            <div class="proj-links">
+              <a href="#" target="_blank" class="proj-link live">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Live Demo
+              </a>
+              <a href="#" target="_blank" class="proj-link">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===CONTACT==== -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:3rem" class="reveal">
+        <p class="section-label">Let's Connect</p>
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-sub" style="margin:0 auto">
+          Do you have a project in mind or just want to say hello? Feel free to reach out.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+
+        <div class="reveal">
+          <h3>Let's Talk</h3>
+          <p>
+            Whether it's a collaboration, a project idea, or just a question <br>
+            I'm always open to new conversations. Fill out the form or reach me
+            through any of the channels below. <br>
+          </p>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">📧</div>
+            <div class="contact-item-text">
+              <small>Email</small>
+              <span>jezrarivero@gmail.com</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div class="contact-item-text">
+              <small>Location</small>
+              <span>Naga City, Philippines</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🕐</div>
+            <div class="contact-item-text">
+              <small>Response Time</small>
+              <span>Within 24 hours</span>
+            </div>
+          </div>
+
+          <div class="social-links">
+            <a href="https://github.com/jezrarivero-ai" target="_blank" class="social-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/jhumuel-ezra-rivero-228760406/" target="_blank" class="social-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
+            <a href="https://www.facebook.com/abcdefghijhumuel" target="_blank" class="social-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              Facebook
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap reveal">
+          <form id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="fname" placeholder="Jhumuel" required>
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lname" placeholder="Rivero" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="jez@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="Project Inquiry / Collaboration / Just Saying Hi">
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Tell me about your project or say hello..." required></textarea>
+            </div>
+            <button type="submit" class="form-submit">
+              Send Message →
+            </button>
+          </form>
+          <div class="form-success" id="formSuccess">
+            ✅ Thanks for reaching out! I'll get back to you soon.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===FOOTER=== -->
+  <footer>
+    <div class="container">
+      <div class="footer-logo">JEAR</div>
+      <p>
+        &copy; 2026 Jhumuel Ezra A. Rivero · All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const html = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const mobThemeToggle = document.getElementById('mobThemeToggle');
+    const mobThemeIcon  = document.getElementById('mobThemeIcon');
+
+    function applyTheme(dark) {
+      html.dataset.theme = dark ? 'dark' : 'light';
+      themeToggle.textContent = dark ? '☀️' : '🌙';
+      mobThemeIcon.innerHTML = dark
+        ? '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>'
+        : '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+      localStorage.setItem('theme', dark ? 'dark' : 'light');
+    }
+    const saved = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyTheme(saved ? saved === 'dark' : prefersDark);
+
+    themeToggle.addEventListener('click', () => applyTheme(html.dataset.theme !== 'dark'));
+    mobThemeToggle.addEventListener('click', () => applyTheme(html.dataset.theme !== 'dark'));
+
+    const heroBgVideo   = document.getElementById('heroBgVideo');
+    const heroVideoWrap = document.getElementById('heroVideoWrap');
+    const heroBlobFall  = document.getElementById('heroBlobFallback');
+    const homeSection   = document.getElementById('home');
+ 
+    if (heroBgVideo) {
+      heroBgVideo.addEventListener('canplay', () => {
+        homeSection.classList.add('hero-video-active');
+      });
+      heroBgVideo.addEventListener('error', showBlobFallback);
+      // If src is empty / placeholder, show blobs immediately
+      const src = heroBgVideo.querySelector('source')?.src || '';
+      if (!src || src.includes('your-video.mp4')) showBlobFallback();
+    }
+    function showBlobFallback() {
+      if (heroVideoWrap) heroVideoWrap.style.display = 'none';
+      if (heroBlobFall) heroBlobFall.style.display = 'block';
+    }
+
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('#navLinks a');
+    const mobItems = document.querySelectorAll('.mob-nav-item');
+
+    function setActive(id) {
+      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${id}`));
+      mobItems.forEach(a => a.classList.toggle('active', a.dataset.section === id));
+    }
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id); });
+    }, { threshold: 0.35, rootMargin: '-80px 0px -30% 0px' });
+    sections.forEach(s => observer.observe(s));
+
+    /* ── Scroll Reveal ─────────────────────────────────────── */
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          // Stagger child cards within a grid
+          const delay = e.target.closest('.skills-grid, .projects-grid')
+            ? Array.from(e.target.parentElement.children).indexOf(e.target) * 80
+            : 0;
+          setTimeout(() => e.target.classList.add('visible'), delay);
+          revealObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    /* ── Skill Bar Animation ───────────────────────────────── */
+    const barObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('.skill-bar-fill').forEach((bar, i) => {
+            setTimeout(() => {
+              bar.style.width = (bar.dataset.width || 0) + '%';
+            }, i * 120 + 200);
+          });
+          barObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.skill-card').forEach(c => barObserver.observe(c));
+
+    /* ── Project Filter ────────────────────────────────────── */
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        document.querySelectorAll('.project-card').forEach(card => {
+          const show = f === 'all' || card.dataset.category === f;
+          card.classList.toggle('hidden', !show);
+          if (show) {
+            card.style.animation = 'none';
+            card.offsetHeight; 
+            card.style.animation = '';
+          }
+        });
+      });
+    });
+
+    /* ── Contact Form ──────────────────────────────────────── */
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('.form-submit');
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+      setTimeout(() => {
+        this.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      }, 1200);
+    });
+
+    /* ── Smooth scroll for anchor links ───────────────────── */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const offset = window.innerWidth <= 768 ? 0 : 70;
+          window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

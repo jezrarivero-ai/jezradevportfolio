@@ -1,71 +1,98 @@
+//THEME TOGGLE ---
 const html = document.documentElement;
 const themeToggle = document.getElementById('themeToggle');
 const mobThemeToggle = document.getElementById('mobThemeToggle');
-const mobThemeIcon  = document.getElementById('mobThemeIcon');
 
 function applyTheme(dark) {
     html.dataset.theme = dark ? 'dark' : 'light';
-    themeToggle.textContent = dark ? '☀️' : '🌙';
-    mobThemeIcon.innerHTML = dark
-    ? '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>'
-    : '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    if(themeToggle) themeToggle.textContent = dark ? '☀️' : '🌙';
     localStorage.setItem('theme', dark ? 'dark' : 'light');
-    }
-    const saved = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    applyTheme(saved ? saved === 'dark' : prefersDark);
+}
 
+const savedTheme = localStorage.getItem('theme');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+applyTheme(savedTheme ? savedTheme === 'dark' : prefersDark);
+
+if (themeToggle) {
     themeToggle.addEventListener('click', () => applyTheme(html.dataset.theme !== 'dark'));
+}
+if (mobThemeToggle) {
     mobThemeToggle.addEventListener('click', () => applyTheme(html.dataset.theme !== 'dark'));
+}
 
-    /* ── Active Nav on Scroll ──────────────────────────────── */
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('#navLinks a');
-    const mobItems = document.querySelectorAll('.mob-nav-item');
-
-    function setActive(id) {
-      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${id}`));
-      mobItems.forEach(a => a.classList.toggle('active', a.dataset.section === id));
-    }
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id); });
-    }, { threshold: 0.35, rootMargin: '-80px 0px -30% 0px' });
-    sections.forEach(s => observer.observe(s));
-
-    /* ── Scroll Reveal ─────────────────────────────────────── */
-    const revealEls = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver(entries => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-          // Stagger child cards within a grid
-          const delay = e.target.closest('.skills-grid, .projects-grid')
-            ? Array.from(e.target.parentElement.children).indexOf(e.target) * 80
-            : 0;
-          setTimeout(() => e.target.classList.add('visible'), delay);
-          revealObserver.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    revealEls.forEach(el => revealObserver.observe(el));
-
-    /* ── Skill Bar Animation ───────────────────────────────── */
-    const barObserver = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.querySelectorAll('.skill-bar-fill').forEach((bar, i) => {
+//WELCOME LOADER LOGIC ---
+document.addEventListener("DOMContentLoaded", () => {
+    const loader = document.getElementById('loader');
+    const loaderBar = document.getElementById('loaderBar');
+    let width = 0;
+    
+    // Simulate loading progress
+    const interval = setInterval(() => {
+        if (width >= 100) {
+            clearInterval(interval);
             setTimeout(() => {
-              bar.style.width = (bar.dataset.width || 0) + '%';
-            }, i * 120 + 200);
-          });
-          barObserver.unobserve(e.target);
+                loader.classList.add('hidden');
+            }, 600); // Wait a split second after filling
+        } else {
+            width += Math.floor(Math.random() * 20) + 10;
+            if(width > 100) width = 100;
+            loaderBar.style.width = width + '%';
         }
-      });
-    }, { threshold: 0.2 });
-    document.querySelectorAll('.skill-card').forEach(c => barObserver.observe(c));
+    }, 150);
+});
 
-    /* ── Project Filter ────────────────────────────────────── */
-    document.querySelectorAll('.filter-btn').forEach(btn => {
+//SCROLL REVEAL & SKILL BARS
+const reveals = document.querySelectorAll('.reveal');
+const skillBars = document.querySelectorAll('.skill-bar-fill');
+
+function checkScroll() {
+    const triggerBottom = window.innerHeight * 0.85;
+
+    reveals.forEach(reveal => {
+        const revealTop = reveal.getBoundingClientRect().top;
+        if (revealTop < triggerBottom) {
+            reveal.classList.add('visible');
+        }
+    });
+
+    skillBars.forEach(bar => {
+        const barTop = bar.getBoundingClientRect().top;
+        if (barTop < triggerBottom) {
+            bar.style.width = bar.dataset.width + '%';
+        }
+    });
+}
+
+window.addEventListener('scroll', checkScroll);
+checkScroll();
+
+// --- MODAL LOGIC ---
+const projectModal = document.getElementById('project-modal');
+const modalClose = document.getElementById('modalClose');
+const modalTitle = document.getElementById('modalTitle');
+const modalDesc = document.getElementById('modalDesc');
+
+window.openProjectModal = function(card) {
+    modalTitle.textContent = card.dataset.title;
+    modalDesc.textContent = card.dataset.desc;
+    projectModal.classList.add('open');
+};
+
+if (modalClose) {
+    modalClose.addEventListener('click', () => {
+        projectModal.classList.remove('open');
+    });
+}
+
+// Close modal when clicking outside the content
+window.addEventListener('click', (e) => {
+    if (e.target === projectModal) {
+        projectModal.classList.remove('open');
+    }
+});
+
+//Projects
+ document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
@@ -75,34 +102,79 @@ function applyTheme(dark) {
           card.classList.toggle('hidden', !show);
           if (show) {
             card.style.animation = 'none';
-            card.offsetHeight; // reflow
+            card.offsetHeight; 
             card.style.animation = '';
           }
         });
       });
     });
 
-    /* ── Contact Form ──────────────────────────────────────── */
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const btn = this.querySelector('.form-submit');
-      btn.textContent = 'Sending…';
-      btn.disabled = true;
-      // Simulate send (replace with actual form action / EmailJS / etc.)
-      setTimeout(() => {
-        this.style.display = 'none';
-        document.getElementById('formSuccess').style.display = 'block';
-      }, 1200);
+//ACTIVE NAV LINK HIGHLIGHTING
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-links a');
+const mobNavLinks = document.querySelectorAll('.mob-nav-item');
+
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= (sectionTop - sectionHeight / 3)) {
+            current = section.getAttribute('id');
+        }
     });
 
-    /* ── Smooth scroll for anchor links ───────────────────── */
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) {
-          e.preventDefault();
-          const offset = window.innerWidth <= 768 ? 0 : 70;
-          window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
+    navLinks.forEach(a => {
+        a.classList.remove('active');
+        if (a.getAttribute('href').includes(current)) {
+            a.classList.add('active');
         }
-      });
     });
+
+    mobNavLinks.forEach(a => {
+        a.classList.remove('active');
+        if (a.dataset.section === current) {
+            a.classList.add('active');
+        }
+    });
+});
+
+/* EMAILJS CONTACT FORM INTEGRATION */
+const contactForm = document.getElementById('contactForm');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const submitBtn = this.querySelector('.form-submit');
+        const originalBtnText = submitBtn.textContent;
+
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+
+        emailjs.sendForm('service_e59wscu', 'template_mq8iwkk', this)
+            .then(() => {
+                // Success
+                submitBtn.textContent = 'Message Sent!';
+                submitBtn.style.backgroundColor = '#10B981'; // Success Green
+                
+                // Hide form and show success message if you have one
+                setTimeout(() => {
+                    contactForm.reset();
+                    submitBtn.textContent = originalBtnText;
+                    submitBtn.style.backgroundColor = '';
+                    submitBtn.disabled = false;
+                    
+                    // Optional: Show your success div
+                    document.getElementById('formSuccess').style.display = 'block';
+                    contactForm.style.display = 'none';
+                }, 2000);
+            }, (error) => {
+                // Error
+                console.error('FAILED...', error);
+                submitBtn.textContent = 'Error! Try Again';
+                submitBtn.style.backgroundColor = '#EF4444'; // Error Red
+                submitBtn.disabled = false;
+            });
+    });
+}
